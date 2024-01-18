@@ -3,20 +3,40 @@
 #include <cstring>
 using namespace std;
 
-bool compare(string a, string b)
+int compare(string a, string b)
 {
     if (a.length() != b.length())
     {
-        return false;
+        for (int i = 0; i < a.length() && i < b.length(); i++)
+        {
+            char a_char = (char)a[i];
+            char b_char = (char)b[i];
+            if (a_char > b_char)
+            {
+                return 1;
+            }
+            else if (b_char > a_char)
+            {
+                return -1;
+            }
+        }
+        return a.length() > b.length() ? 1 : -1;
     }
 
     for (int i = 0; i < a.length(); i++)
     {
-        if(a[i]!=b[i]){
-            return false;
+        char a_char = (char)a[i];
+        char b_char = (char)b[i];
+        if (a_char > b_char)
+        {
+            return 1;
+        }
+        else if (b_char > a_char)
+        {
+            return -1;
         }
     }
-    return true;
+    return 0;
 }
 
 int main()
@@ -51,21 +71,32 @@ int main()
 
     // push back function
     name.push_back('a');
-    cout << "push back : " << name << endl;
+    // cout << "push back : " << name << endl;
 
     // pop back function
     name.pop_back();
-    cout << "pop back : " << name << endl;
+    // cout << "pop back : " << name << endl;
 
     // substr
-    cout << "substr : " << name.substr(3, 5) << endl;
+    // cout << "substr : " << name.substr(3, 5) << endl;
 
     // compare
 
-    cout << "comparision of  first and last is : " << firstName.compare(lastName) << endl;
-    cout << "comparision of  first and last is : " << firstName.compare("Rajata") << endl;
-    cout << "comparision of  first and last is : " << firstName.compare("Rajat") << endl;
-    cout << "comparision of  first and last is : " << name.compare("rajat rawal") << endl;
+    // cout << "comparision of  first and last is : " << firstName.compare(lastName) << endl;
+    // cout << "comparision of  first and last is : " << firstName.compare("Rajata") << endl;
+    // cout << "comparision of  first and last is : " << firstName.compare("Rajat") << endl;
+    // cout << "comparision of  first and last is : " << name.compare("rajat rawal") << endl;
+    // cout << "comparision of  first and last is : " << compare(firstName, "Rajax") << endl;
+
+    // find
+    // cout << "find at : " << firstName.find("at");
+
+    //replace
+    name.replace(3,3,lastName);
+    cout << name << endl;
+    name.erase(4, 5);
+    cout << name << endl;
+    
 
     return 0;
 }
