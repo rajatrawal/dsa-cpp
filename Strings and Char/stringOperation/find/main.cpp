@@ -12,6 +12,7 @@ int find(string s, string part)
         {
             part_index++;
         }
+        
         else
         {
             part_index = 0;
