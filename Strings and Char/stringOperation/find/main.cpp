@@ -11,6 +11,7 @@ int find(string s, string part)
         if (s[i] == part[part_index])
         {
             part_index++;
+            
         }
         
         else
