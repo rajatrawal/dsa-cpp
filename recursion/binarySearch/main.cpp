@@ -1,24 +1,41 @@
 #include <iostream>
 using namespace std;
 
-int binarySearch(int arr[], int start, int end,int target)
+int binarySearch(int arr[], int start, int end, int target)
 {
 
-    if(start > end){
+    if (start > end)
+    {
         return -1;
     }
     int mid = start + (end - start) / 2;
 
-    if(arr[mid]==target){
+    if (arr[mid] == target)
+    {
         return mid;
     }
-    else if(arr[mid] < target){
-        start = mid + 1;
+
+    /// method 1
+    // if (arr[mid] < target)
+    // {
+    //     start = mid + 1;
+    // }
+    // else
+    // {
+    //     end = mid - 1;
+    // }
+    // return binarySearch(arr, start, end, target);
+
+    // method 2
+
+    if (target > arr[mid])
+    {
+        return binarySearch(arr, mid + 1, end, target);
     }
-    else{
-        end = mid - 1;
+    else
+    {
+        return binarySearch(arr, start, mid - 1, target);
     }
-    return binarySearch(arr, start, end, target);
 }
 
 int main()
